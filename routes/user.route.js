@@ -1,10 +1,12 @@
 import express from "express";
-import {addCustomer,checkEmail,updateCustomer, deleteCustomer } from "../controller/user.controller.js";
+import {addCustomer,checkEmail,updateCustomer, deleteCustomer,signup } from "../controller/user.controller.js";
 const router = express.Router();
 
+// http://localhost:3000/user/
 router.post("/add-customer",addCustomer);
 router.get("/check-email/:emailId",checkEmail);
 router.post("/update",updateCustomer);
-router.get("/delete-customer/:id",deleteCustomer)
+router.get("/delete-customer/:id",deleteCustomer);
+router.post("/signup",signup);
 
 export default router;

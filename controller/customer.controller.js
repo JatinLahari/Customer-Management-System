@@ -25,3 +25,9 @@ export const updateCustomerPage = async (request, response, next)=>{
     let customerArr = await Customer.findCustomerId(customerId);
     return response.render("edit-customer.ejs", { customer1: customerArr[0] });
 }
+export const signupPage = (request, response, next) => {
+    return response.render("signup.ejs");
+}
+export const signinPage = (request, response, next) => {
+    return response.render("signin.ejs");
+}

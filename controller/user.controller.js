@@ -1,4 +1,5 @@
 import Customer  from "../model/cust.model.js";
+import User  from "../model/user.model.js";
 
 export const checkEmail = (request,response,next)=>{
   Customer.hasEmail(request.params.emailId)
@@ -42,3 +43,15 @@ export const deleteCustomer = (request, response, next) => {
             response.status(500).send("Error deleting customer");
         });
 };
+
+export const signup = (request, response, next) => {
+    let {username, password} = request.body;
+    let user = new User(null, username, password);
+    user.addUser()
+    .then(result => {
+        return response.redirect("/signin");
+    }).catch(err => {
+        console.log(err);
+        return response.status(500).send("Error signing up");
+    });
+}

@@ -22,6 +22,7 @@ class Customer{
         });
     });
 }
+
     static findCustomerId(id){
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,con)=>{
