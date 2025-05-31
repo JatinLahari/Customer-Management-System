@@ -1,0 +1,21 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cms.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
+    "path": "^0.12.7"
+  }
+}

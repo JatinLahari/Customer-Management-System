@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("__bootstrap.ejs") %>
+    <title>Remove Customer</title>
+</head>
+<body style="background-color: cornsilk; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+    <%- include("__header.ejs") %>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h4>Remove Customer</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">Are you sure you want to remove the following customer?</p>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item"><strong>Name:</strong> <%= customer.name %></li>
+                            <li class="list-group-item"><strong>Email:</strong> <%= customer.email %></li>
+                            <li class="list-group-item"><strong>Phone:</strong> <%= customer.phone %></li>
+                        </ul>
+                        <form action="/delete-customer/<%= customer.id %>" method="post">
+                            <button type="submit" class="btn btn-danger">Yes, Remove</button>
+                            <a href="/" class="btn btn-secondary ms-2">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

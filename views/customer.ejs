@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("__bootstrap.ejs") %>
+    <title>customer</title>
+    <style>
+        span{
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body style="background-color: cornsilk; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+    <%- include("__header.ejs")%>
+    <div class="text-danger d-flex justify-content-center align-items-center mt-3">
+        <div style="border:3px solid skyblue; width: 85%; border-radius: 30px; text-align: center;" >
+            <h1>CUSTOMERS</h1>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <% for(let customer of customers){ %>
+                <div class="col-md-4 p-1">
+                    <div class="bg-info text-danger d-flex justify-content-center align-items-center" style="width: 100%; height: 40px; font-size: 20px; border-radius: 20px 20px 0px 0px;">
+                    <small><b>Customer Card</b></small></div>
+                    <div class="p-3" style="background-color: bisque; box-shadow: 10px 10px 10px grey; min-height: 200px; border-radius: 0px 0px 20px 20px; font-size: 15px;">
+                        <table>
+                            <tr>
+                                <th><i class="bi bi-person-vcard"></i> Customer ID: </th>
+                                <td><span><%=customer.id %></span></td>
+                            </tr>
+                            <tr>
+                                <th><i class="bi bi-person-fill"></i> Customer Name: </th>
+                                <td><span><%=customer.name %></span></td>
+                            </tr>
+                            <tr>
+                                <th><i class="bi bi-envelope-at-fill"></i> Customer Email: </th>
+                                <td><span><%=customer.email %></span></td>
+                            </tr>
+                            <tr>
+                                <th><i class="bi bi-telephone-fill"></i> Customer Phone no.: </th>
+                                <td><span><%=customer.phone %></span></td>
+                            </tr>
+                            <tr>
+                                <th><i class="bi bi-house-fill"></i> Customer Address: </th>
+                                <td><span><%=customer.address %></span></td>
+                            </tr>    
+                        </table>
+                        
+                        <!-- <div>
+                            <label for=""><b>Customer ID: </b><span><%=customer.id%></span></label>
+                        </div>
+                        <div>
+                            <label for=""><b>Customer Name: </b><span><%=customer.name%></span></label>
+                        </div>
+                        <div>
+                            <label for=""><b>Customer Email: </b><span><%=customer.email%></span></label>
+                        </div>
+                        <div>
+                            <label for=""><b>Customer Phone no.: </b><span><%=customer.phone%></span></label>
+                        </div>
+                        <div>
+                            <label for=""><b>Customer Address: </b><span><%=customer.address%></span></label>
+                        </div> -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <a href="/edit-customer/<%=customer.id%>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="/delete-customer/<%=customer.id%>" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

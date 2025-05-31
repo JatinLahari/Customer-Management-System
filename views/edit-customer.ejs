@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("__bootstrap.ejs") %>
+    <title>Update Details</title>
+</head>
+<body style="background-color: cornsilk; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+    <%- include("__header.ejs")%>
+    <div class="container d-flex justify-content-center align-items-center mt-3" style="height: 650px;">
+        <div class="form" style="width: 50%; height: 580px;  box-shadow: 10px 10px 10px grey;">
+            <div class="d-flex justify-content-center align-items-center text-white bg-danger" style="height: 40px; font-size: 20px;">
+                <small><b>UPDATE DETAILS</b></small>
+            </div>
+            <div class="p-4">
+                <form action="/user/update" method="post">
+                    <label><b>Customer Id: </b></label>
+                    <input type="text" class="form-control" value="<%= customer1.id%>" name="id" >
+                    <div class="mt-3">
+                        <label><b>Customer Name: </b></label>
+                        <input type="text" class="form-control" name="name" value="<%= customer1.name%>">
+                    </div>
+                    <div class="mt-3">
+                        <label><b>Customer Email: </b></label>
+                        <input onblur="checkEmail(this.value)" type="email" class="form-control" name="email" value="<%= customer1.email%>">
+                        <small id="emailError"></small>
+                    </div>
+                    <div class="mt-3">
+                        <label><b>Customer Phone no.: </b></label>
+                        <input type="text" class="form-control" name="phone" value="<%= customer1.phone%>">
+                    </div>
+                    <div class="mt-3">
+                        <label><b>Customer Address: </b></label>
+                        <input type="text" class="form-control" name="address" value="<%= customer1.address%>">
+                    </div>  
+                    <div class="mt-4 d-flex justify-content-center align-items-center">
+                        <button class="btn btn-dark" style="width: 50%;">Submit</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        function checkEmail(email){
+            let xhttp =  new XMLHttpRequest();
+            xhttp.open("GET",`http://localhost:2301/user/check-email/${email}`,true);
+            xhttp.send();
+            xhttp.onreadystatechange = function(){
+                if(xhttp.readyState == 4){
+                    let response = xhttp.responseText;
+                    response = JSON.parse(response);
+                    let emailError = document.getElementById("emailError");
+                    response.status ? emailError.setAttribute("class","text-danger") : emailError.setAttribute("class","text-success");
+                    emailError.innerText = response.message;  
+                }
+            }
+        }
+    </script>
+</body>
+</html>
