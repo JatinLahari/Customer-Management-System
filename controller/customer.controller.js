@@ -1,15 +1,15 @@
 import Customer from "../model/cust.model.js";
 export const customerCardPage = async (request, response, next)=>{
     let customerList = await Customer.findAllCustomer();
-    return response.render("customer.ejs",{customers: customerList});
+    return response.render("customer.ejs",{customers: customerList,isLoggedIn: request.session.isLoggedIn});
 }
 export const addCustomerPage = (request, response, next)=>{
-    return response.render("add-customer.ejs");
+    return response.render("add-customer.ejs",{isLoggedIn: request.session.isLoggedIn});
 }
 export const editCustomerPage = async (request, response, next)=>{
     let customerId = request.params.id;
     let customerArr = await Customer.findCustomerId(customerId);
-    return response.render("edit-customer.ejs",{customer1: customerArr[0]});
+    return response.render("edit-customer.ejs",{customer1: customerArr[0], isLoggedIn: request.session.isLoggedIn});
 }
 export const deleteCustomerPage = async (request, response, next)=>{
     if (request.method === "POST") {
@@ -18,12 +18,12 @@ export const deleteCustomerPage = async (request, response, next)=>{
     }
     let customerArr = await Customer.findCustomerId(request.params.id);
     let customer = customerArr[0];
-    return response.render("delete-customer.ejs", { customer });
+    return response.render("delete-customer.ejs", { customer, isLoggedIn: request.session.isLoggedIn });
 }
 export const updateCustomerPage = async (request, response, next)=>{
     let customerId = request.params.id;
     let customerArr = await Customer.findCustomerId(customerId);
-    return response.render("edit-customer.ejs", { customer1: customerArr[0] });
+    return response.render("edit-customer.ejs", { customer1: customerArr[0], isLoggedIn: request.session.isLoggedIn });
 }
 export const signupPage = (request, response, next) => {
     return response.render("signup.ejs");

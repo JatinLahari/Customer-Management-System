@@ -16,10 +16,10 @@
             <h1>CUSTOMERS</h1>
         </div>
     </div>
-    <div class="container mt-5">
+    <div class="container">
       <div class="row">
         <% for(let customer of customers){ %>
-        <div class="col-md-4 p-1">
+        <div class="col-md-4 p-0" style="margin:90px;">
           <div class="bg-info text-danger d-flex justify-content-center align-items-center" style="width: 100%; height: 40px; font-size: 20px; border-radius: 20px 20px 0px 0px;">
             <small><b>Customer Card</b></small>
           </div>
@@ -65,7 +65,7 @@
                 <label for=""><b>Customer Address: </b><span><%=customer.address%></span></label>
             </div> -->
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <a href="/edit-customer/<%=customer.id%>" class="btn btn-primary btn-sm" >Edit</a>
+              <a href="/edit-customer/<%=customer.id%>" class="btn btn-warning btn-sm" >Edit</a>
               <a href="/delete-customer/<%=customer.id%>" class="btn btn-danger btn-sm" >Delete</a>
             </div>
           </div>

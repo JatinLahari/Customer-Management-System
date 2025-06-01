@@ -5,16 +5,16 @@
     <title>Update Details</title>
 </head>
 <body style="background-color: cornsilk; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-    <%- include("__header.ejs")%>
-    <div class="container d-flex justify-content-center align-content-center mt-5" style="min-height: 350px;">
-        <div class="form" style="width: 40%; box-shadow: 10px 10px 10px grey;">
+    <%# include("__header.ejs")%> 
+    <div class="container d-flex justify-content-center align-content-center mt-5" style="min-height: 300px;">
+        <div class="form" style="width: 40%; border: 1px solid  rgb(91, 190, 230);">
             <div class="bg-info text-center text-white p-1">
                 <small style="font-weight: bolder; font-size: 20px;">SIGN IN</small>
             </div>
             <form action="/user/signin" method="post" class="p-4 mt-2">
                 <div class="mt-1">
                     <label><b>Enter Name: </b></label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                    <input type="text" name="username" class="form-control" placeholder="Enter your name" required>
                 </div>
                 <div class="mt-3">
                     <label><b>Enter Password: </b></label>
@@ -22,6 +22,9 @@
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-3">
                     <button class="btn btn-info" style="font-weight: bolder; font-size: 18px; width: 40%;">Sign In</button>
+                </div>
+                <div class="text-center mt-3">
+                    <p>New User? <a href="signup">Sign Up</a></p>
                 </div>
             </form>
         </div>

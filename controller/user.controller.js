@@ -10,6 +10,7 @@ export const checkEmail = (request,response,next)=>{
      return response.status(200).json({status: false,message: "Available"});
   }).catch(err=>{
     console.log(err);
+    return response.status(500).json({ status: false, message: "Server error" });
   })
 }
 export const addCustomer = (request, response,next)=>{
@@ -21,7 +22,7 @@ export const addCustomer = (request, response,next)=>{
         return response.redirect("/");
     }).catch(err=>{
         console.log(err);
-        response.end("Something wrong");
+        return response.end("Something wrong "+sqlMessage);
     });
 }
 export const updateCustomer = (request, response, next)=>{
@@ -40,13 +41,25 @@ export const deleteCustomer = (request, response, next) => {
         .then(result => response.redirect("/"))
         .catch(err => {
             console.log(err);
-            response.status(500).send("Error deleting customer");
+            return response.status(500).send("Error deleting customer");
         });
 };
 
+export const checkUserEmail = (request,response,next)=>{
+  User.hasUserEmail(request.params.emailId)
+  .then(result=>{
+    if(result.length)
+     return response.status(200).json({status: true,message: "Email Id is already taken"});
+    else
+     return response.status(200).json({status: false,message: "Available"});
+  }).catch(err=>{
+    console.log(err);
+    return response.status(500).json({ status: false, message: "Server error" });
+  })
+}
 export const signup = (request, response, next) => {
-    let {username, password} = request.body;
-    let user = new User(null, username, password);
+    let {username,email, password} = request.body;
+    let user = new User(null, username, email, password);
     user.addUser()
     .then(result => {
         return response.redirect("/signin");
@@ -54,4 +67,33 @@ export const signup = (request, response, next) => {
         console.log(err);
         return response.status(500).send("Error signing up");
     });
+}
+export const signin = (request, response, next)=>{
+    let {username, password} = request.body;
+    User.find(username,password)
+    .then(result=>{
+        if(result.length){
+            console.log(result);
+            request.session.isLoggedIn = true;
+            // request.session.currentUser = result[0];
+            return response.redirect("/");
+        }
+        else{
+            return response.redirect("/signin");
+        }
+    })
+    .catch(err=>{
+        return response.end("Something went wrong...");
+    })
+}
+export const signout = (request,response,next)=>{
+   request.session.isLoggedIn = false;
+//    request.session.currentUser = null;
+   request.session.destroy(err =>{
+        if(err){
+            console.log(err);
+            return response.status(500).send("Error signing out");
+        }
+        return response.redirect("/");
+   });
 }
