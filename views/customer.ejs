@@ -9,17 +9,17 @@
       }
     </style>
   </head>
-  <body style="background-color: cornsilk;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; ">    
+  <body style="background-color: cornsilk; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">    
     <%- include("__header.ejs")%>
-    <div class="text-danger d-flex justify-content-center align-items-center mt-3">   
-        <div style="  border: 3px solid skyblue;  width: 85%;  border-radius: 30px;  text-align: center;">
+    <div class="text-danger d-flex justify-content-center align-items-center mt-4">   
+        <div style="  border: 3px solid darkslategrey;  width: 85%;  border-radius: 30px;  text-align: center;">
             <h1>CUSTOMERS</h1>
         </div>
     </div>
-    <div class="container">
+    <div class="container mt-4">
       <div class="row">
         <% for(let customer of customers){ %>
-        <div class="col-md-4 p-0" style="margin:90px;">
+        <div class="col-md-4 p-2">
           <div class="bg-info text-danger d-flex justify-content-center align-items-center" style="width: 100%; height: 40px; font-size: 20px; border-radius: 20px 20px 0px 0px;">
             <small><b>Customer Card</b></small>
           </div>
@@ -50,28 +50,29 @@
             </table>
 
         <!--<div>
-                <label for=""><b>Customer ID: </b><span><%=customer.id%></span></label>
+                <label for=""><b>Customer ID: </b><span><%#customer.id%></span></label>
             </div>
             <div>
-                <label for=""><b>Customer Name: </b><span><%=customer.name%></span></label>
+                <label for=""><b>Customer Name: </b><span><%#customer.name%></span></label>
             </div>
             <div>
-                <label for=""><b>Customer Email: </b><span><%=customer.email%></span></label>
+                <label for=""><b>Customer Email: </b><span><%#customer.email%></span></label>
             </div>
             <div>
-                <label for=""><b>Customer Phone no.: </b><span><%=customer.phone%></span></label>
+                <label for=""><b>Customer Phone no.: </b><span><%#customer.phone%></span></label>
             </div>
             <div>
-                <label for=""><b>Customer Address: </b><span><%=customer.address%></span></label>
+                <label for=""><b>Customer Address: </b><span><%#customer.address%></span></label>
             </div> -->
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <a href="/edit-customer/<%=customer.id%>" class="btn btn-warning btn-sm" >Edit</a>
-              <a href="/delete-customer/<%=customer.id%>" class="btn btn-danger btn-sm" >Delete</a>
+              <a href="/edit-customer/<%=customer.id%>" class="btn btn-warning btn-sm" style="width: 65px; font-weight: bold;">Edit</a>
+              <a href="/delete-customer/<%=customer.id%>" class="btn btn-danger btn-sm" style="font-weight: bold;" >Delete</a>
             </div>
           </div>
         </div>
         <% } %>
       </div>
     </div>
+    <%- include("__footer.ejs")%>
   </body>
 </html>

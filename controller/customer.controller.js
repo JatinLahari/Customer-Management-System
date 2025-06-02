@@ -1,7 +1,13 @@
 import Customer from "../model/cust.model.js";
+import User from "../model/user.model.js";
+export const indexPage = async(request, response, next)=>{
+    let username = await User.find();
+    return response.render("index.ejs",{isLoggedIn: request.session.isLoggedIn, username: username});
+}
 export const customerCardPage = async (request, response, next)=>{
     let customerList = await Customer.findAllCustomer();
-    return response.render("customer.ejs",{customers: customerList,isLoggedIn: request.session.isLoggedIn});
+    let username = await User.find();
+    return response.render("customer.ejs",{customers: customerList,isLoggedIn: request.session.isLoggedIn,username:username});
 }
 export const addCustomerPage = (request, response, next)=>{
     return response.render("add-customer.ejs",{isLoggedIn: request.session.isLoggedIn});

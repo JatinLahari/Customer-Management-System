@@ -11,6 +11,7 @@ cms.use(session({
     resave: false,
     saveUninitialized: false
 }));
+cms.use(express.static("./public"));
 cms.use(bodyParser.json());
 cms.use(bodyParser.urlencoded({extended:true}));
 cms.use("/user",userRouter);

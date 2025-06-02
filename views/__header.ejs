@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md navbar-dark" style="background-color: darkslategrey;">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="background-color: #343a40;">
   <!-- Brand -->
-  <a class="navbar-brand " style="font-weight: bolder;" href="/">
-    <span style="font-size: 35px; color: red;">C</span>MS
+  <a class="navbar-brand" style="font-weight: bolder;" href="/">
+    <span style="font-size: 35px; color: #e63946;">C</span><span style="color: white;">MS</span>
   </a>
 
-  <!-- Toggler/collapsibe Button -->
+  <!-- Toggler/collapsible Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,29 +13,34 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar" style="width: 70%;">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-warning" style="font-weight:bolder; font-size: 25px;" href="./customer">Home</a>
+        <a class="nav-link" style="font-weight: bold; font-size: 18px; color: white;" href="./">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-success" style="font-weight:bolder; font-size: 25px;" href="./add-customer">Add Customer</a>
+        <a class="nav-link" style="font-weight: bold; font-size: 18px; color: white;" href="./customer">Customers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="font-weight: bold; font-size: 18px; color: white;" href="./add-customer">Add Customer</a>
       </li>
     </ul>
   </div>
+
   <div class="collapse navbar-collapse" id="collapsibleNavbar" style="width: 30%; padding-right: 100px;">
     <ul class="navbar-nav ml-auto">
-
-      <%if(!isLoggedIn){%>
-      <li class="nav-item">
-        <a class="nav-link text-info btn m-1" style="font-weight:bolder; border:2px solid white; border-radius: 20px;" href="./signin">Sign In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-danger btn m-1" style="font-weight:bolder; border:2px solid white; border-radius: 20px;" href="./signup">Sign Up</a>
-      </li>
-      <%} else{%>
-      <li class="nav-item">
-        <a class="nav-link text-danger btn m-1" style="font-weight:bolder; border:2px solid white; border-radius: 20px;" href="/user/sign-out">Sign Out</a>
-      </li>
-        <%}%>
-        
+      <% if (!isLoggedIn) { %>
+        <li class="nav-item">
+          <a class="nav-link btn m-1 text-white" style="background-color: #17a2b8; font-weight: bold; font-size: 16px; border-radius: 20px;" href="./signin">Sign In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn m-1 text-white" style="background-color: #28a745; font-weight: bold; font-size: 16px; border-radius: 20px;" href="./signup">Sign Up</a>
+        </li>
+      <% } else { %>
+        <li class="nav-item">
+          <!-- <a class=" nav-link m-1 text-white" style="font-weight: bold; font-size: 16px;">Welcome<%# username.name%></a> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn m-1 text-white" style="background-color: #dc3545; font-weight: bold; font-size: 16px; border-radius: 20px;" href="/user/sign-out">Sign Out</a>
+        </li>
+      <% } %>
     </ul>
-    </div>
+  </div>
 </nav>

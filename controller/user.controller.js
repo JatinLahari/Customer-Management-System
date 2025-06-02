@@ -5,9 +5,9 @@ export const checkEmail = (request,response,next)=>{
   Customer.hasEmail(request.params.emailId)
   .then(result=>{
     if(result.length)
-     return response.status(200).json({status: true,message: "Email Id is already taken"});
+     return response.status(200).json({status: true,message: "Sorry!☹️ This email is not available."});
     else
-     return response.status(200).json({status: false,message: "Available"});
+     return response.status(200).json({status: false,message: "Wow!✌️ Nice Email"});
   }).catch(err=>{
     console.log(err);
     return response.status(500).json({ status: false, message: "Server error" });
@@ -19,7 +19,7 @@ export const addCustomer = (request, response,next)=>{
     let add = new Customer(id, name, email, phone, address);
     add.addCustomer()
     .then(result=>{
-        return response.redirect("/");
+        return response.redirect("/customer");
     }).catch(err=>{
         console.log(err);
         return response.end("Something wrong "+sqlMessage);
@@ -30,7 +30,7 @@ export const updateCustomer = (request, response, next)=>{
     let update = new Customer(id,name,email,phone,address);
     update.updateCustomerData()
     .then(result=>{
-        return response.redirect("/");
+        return response.redirect("/customer");
     }).catch(err=>{
         console.log(err);
         return response.status(500).send("Error updating customer");
@@ -38,7 +38,7 @@ export const updateCustomer = (request, response, next)=>{
 }
 export const deleteCustomer = (request, response, next) => {
     Customer.deleteCustomerId(request.params.id)
-        .then(result => response.redirect("/"))
+        .then(result => response.redirect("/customer"))
         .catch(err => {
             console.log(err);
             return response.status(500).send("Error deleting customer");
@@ -49,9 +49,9 @@ export const checkUserEmail = (request,response,next)=>{
   User.hasUserEmail(request.params.emailId)
   .then(result=>{
     if(result.length)
-     return response.status(200).json({status: true,message: "Email Id is already taken"});
+     return response.status(200).json({status: true,message: "Sorry!☹️ This email is not available."});
     else
-     return response.status(200).json({status: false,message: "Available"});
+     return response.status(200).json({status: false,message: "Wow!✌️ Nice Email"});
   }).catch(err=>{
     console.log(err);
     return response.status(500).json({ status: false, message: "Server error" });
@@ -75,7 +75,6 @@ export const signin = (request, response, next)=>{
         if(result.length){
             console.log(result);
             request.session.isLoggedIn = true;
-            // request.session.currentUser = result[0];
             return response.redirect("/");
         }
         else{
@@ -88,7 +87,6 @@ export const signin = (request, response, next)=>{
 }
 export const signout = (request,response,next)=>{
    request.session.isLoggedIn = false;
-//    request.session.currentUser = null;
    request.session.destroy(err =>{
         if(err){
             console.log(err);

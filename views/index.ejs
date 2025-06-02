@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CMS</title>
+    <%- include("__bootstrap.ejs")%>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: cornsilk;
+        margin: 0;
+        padding: 0;
+      }
+      .up {
+        width: 100%;
+        height: 400px;
+        background-image: url("../public/getstarted.jpg");
+        color: black;
+        text-align: center;
+        padding: 100px 20px;
+      }
+      .getStarted{
+        background-color: #ec2e21;
+        border: none;
+        font-weight: bold;
+        color: white;
+        border-radius: 30px;
+        padding: 8px 20px;
+      }
+      .getStarted:hover{
+        color: white;
+      }
+      #about{
+        width: 80%;
+      }
+      #reviews{
+        width: 80%;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("__header.ejs")%>
+    <div class="up">
+      <h1>Welcome to <b><span style="font-size: 60px; color: red;">C</span>MS</b></h1>
+      <p>A Customer Management Website</p>
+      <a class="getStarted btn" href="./signin">Get Started</a>
+    </div>
+
+    <hr style="width: 80%; height:1px; background-color: grey;">
+
+    <div class="d-flex justify-content-center align-items-center" id="aboutDiv">
+      <div id="about" class="text-center">
+        <h2 style="color: red; font-weight: bold;">About Us</h2>
+        <p>CMS stands for 'Customer Management System', a simple, minimalistic and easy to use website for managing your customer details. The motive is simple- to give a very simple, fast, system for customer details management.</p>
+      </div>
+    </div>
+
+    <hr style="width: 80%; height:1px; background-color: grey;">
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div id="reviews" class="text-center">
+          <h2 style="color: red; font-weight: bold;">What Our Users Say</h2>
+          <p>"A very easy to use website. Helping me to manage data easily!"</p>
+          
+          <p>"A simple minimalistic customer manager. Good work!"</p>
+          
+          <p>"Honestly, I didn't expect it to be this easy! Everything was smooth, and I loved the final result. Highly recommend!"</p>
+        </div>
+        </div>
+    <%- include("__footer.ejs")%>
+  </body>
+</html>
